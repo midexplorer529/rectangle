@@ -57,3 +57,5 @@ document.querySelector(".reset").onclick = function () {
 //     setTimeout(() => document.querySelector(".rectangle").style.width = '100%', 1000);
 //     setTimeout(() => document.querySelector(".rectangle").style.backgroundColor = '#ccc', 1000);
 // }
+
+// this is a new comment
