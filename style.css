@@ -30,3 +30,19 @@ button {
     border-radius: 5px;
 
 }
+
+.colorActive {
+    background-color: #f1c40f;
+}
+
+.squareActive {
+    width: 300px;
+}
+
+.rotateActive {
+    transform: rotate(45deg);
+}
+
+.roundActive {
+    border-radius: 50%;
+}
