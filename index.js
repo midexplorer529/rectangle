@@ -1,3 +1,5 @@
+var degree = 0;
+
 document.querySelector(".change-color").onclick = function () {
     document.querySelector(".rectangle").classList.toggle("color-active");
     // document.querySelector(".rectangle").style.backgroundColor = !document.querySelector(".changeColor").classList.contains("colorActive") ? '#ccc' : '#f1c40f';
@@ -13,7 +15,9 @@ document.querySelector(".rotate").onclick = function () {
     document.querySelector(".rectangle").classList.toggle("rotate-active");
     // document.querySelector(".rectangle").style.width = '300px';
     // document.querySelector(".rectangle").style.height = '300px';
-    // document.querySelector(".rectangle").style.transform = !document.querySelector(".rotate").classList.contains("rotateActive") ? 'rotate(0deg)' : 'rotate(45deg)';
+    degree = document.querySelector(".degree").value;
+    document.querySelector(".rectangle").style.transform = document.querySelector(".rectangle").classList.contains("rotate-active") ? `rotate(${degree}deg)` : 'rotate(0deg)';
+    // console.log("degree is: " + degree);
 }
 
 
@@ -56,4 +60,13 @@ document.querySelector(".reset").onclick = function () {
 //     // setTimeout(() => document.querySelector(".rectangle").style.height = '300px', 1000);
 //     setTimeout(() => document.querySelector(".rectangle").style.width = '100%', 1000);
 //     setTimeout(() => document.querySelector(".rectangle").style.backgroundColor = '#ccc', 1000);
+// }
+
+// var degree = document.querySelector(".degree").value;
+// console.log(degree)
+
+// document.querySelector(".send").onclick = function () {
+//     degree = document.querySelector(".degree").value;
+
+//     console.log(degree);
 // }

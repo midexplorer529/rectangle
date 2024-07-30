@@ -39,9 +39,9 @@ button {
     width: 300px;
 }
 
-.rotate-active {
+/* .rotate-active {
     transform: rotate(45deg);
-}
+} */
 
 .round-active {
     border-radius: 50%;
