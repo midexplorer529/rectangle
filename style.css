@@ -31,18 +31,18 @@ button {
 
 }
 
-.colorActive {
+.color-active {
     background-color: #f1c40f;
 }
 
-.squareActive {
+.square-active {
     width: 300px;
 }
 
-.rotateActive {
+.rotate-active {
     transform: rotate(45deg);
 }
 
-.roundActive {
+.round-active {
     border-radius: 50%;
 }
