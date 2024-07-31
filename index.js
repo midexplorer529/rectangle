@@ -1,5 +1,9 @@
 var degree = 0;
 
+function getDegree() {
+    degree = document.querySelector(".degree").value;
+}
+
 document.querySelector(".change-color").onclick = function () {
     document.querySelector(".rectangle").classList.toggle("color-active");
     // document.querySelector(".rectangle").style.backgroundColor = !document.querySelector(".changeColor").classList.contains("colorActive") ? '#ccc' : '#f1c40f';
@@ -12,10 +16,11 @@ document.querySelector(".make-square").onclick = function () {
 }
 
 document.querySelector(".rotate").onclick = function () {
+    getDegree();
     document.querySelector(".rectangle").classList.toggle("rotate-active");
     // document.querySelector(".rectangle").style.width = '300px';
     // document.querySelector(".rectangle").style.height = '300px';
-    degree = document.querySelector(".degree").value;
+    // degree = document.querySelector(".degree").value;
     document.querySelector(".rectangle").style.transform = document.querySelector(".rectangle").classList.contains("rotate-active") ? `rotate(${degree}deg)` : 'rotate(0deg)';
     // console.log("degree is: " + degree);
 }
@@ -28,9 +33,11 @@ document.querySelector(".make-round").onclick = function () {
 }
 
 document.querySelector(".all-in-one").onclick = function () {
+    getDegree();
     document.querySelector(".rectangle").classList.toggle("color-active");
     setTimeout(() => document.querySelector(".rectangle").classList.toggle("square-active"), 1000);
     setTimeout(() => document.querySelector(".rectangle").classList.toggle("rotate-active"), 2000);
+    // degree = document.querySelector(".degree").value;
     setTimeout(() => document.querySelector(".rectangle").style.transform = `rotate(${degree}deg)`, 2000);
     // setTimeout(() => document.querySelector(".rectangle").style.heigth = '300px', 2000);
     setTimeout(() => document.querySelector(".rectangle").classList.toggle("round-active"), 3000);
