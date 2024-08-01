@@ -15,9 +15,7 @@
         <div class="row">
             <div class="col-md-12 mb-5">
                 <div class="rectangle">
-                    <div>
-                        <input type="number" placeholder="Enter a degree value..." class="form-text degree">
-                    </div>
+                    <h1>BOX</h1>
                 </div>
             </div>
         </div>
@@ -25,17 +23,35 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="row">
-                    <div class="btn-group">
-                        <button class="btn btn-primary change-color">Change Color</button>
-                        <button class="btn btn-secondary make-square">Make Square</button>
-                        <button class="btn btn-info rotate">Rotate</button>
-                        <button class="btn btn-warning make-round">Make Round</button>
+                    <div
+                        style="display: grid; grid-template-columns: repeat(4, 1fr); grid-gap: 1rem; position: relative;">
+                        <div
+                            style="display: flex; flex-direction: column; justify-content: space-between; align-items: center;">
+                            <input type="text" placeholder="Enter a hex color value..." class="form-control color">
+                            <button class="btn btn-primary change-color w-100">Change Color</button>
+                        </div>
+                        <div
+                            style="display: flex; flex-direction: column; justify-content: space-between; align-items: center;">
+                            <input type="text" class="form-control" style="visibility:hidden;">
+                            <button class="btn btn-secondary make-square w-100">Make Square</button>
+                        </div>
+                        <div
+                            style="display: flex; flex-direction: column; justify-content: space-between; align-items: center;">
+                            <input type="number" placeholder="Enter a degree value..." class="form-control degree">
+                            <button class="btn btn-info rotate w-100">Rotate</button>
+                        </div>
+                        <div
+                            style="display: flex; flex-direction: column; justify-content: space-between; align-items: center;">
+                            <input type="text" class="form-control" style="visibility:hidden;">
+                            <button class="btn btn-warning make-round w-100">Make Round</button>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="btn-group">
-                        <button class="btn btn-success all-in-one">All In One</button>
-                        <button class="btn btn-danger reset">Reset</button>
+                    <div
+                        style="display: grid; grid-template-columns: repeat(2, 1fr); grid-gap: 1rem; position: relative;">
+                        <button class="btn btn-success all-in-one w-100 m-0">All In One</button>
+                        <button class="btn btn-danger reset w-100 m-0">Reset</button>
                     </div>
                 </div>
             </div>
