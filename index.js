@@ -66,6 +66,7 @@ document.querySelector(".reset").onclick = function () {
     document.querySelector(".rectangle").style.transform = `rotate(0deg)`;
     setTimeout(() => document.querySelector(".rectangle").classList.remove("square-active"), 1000);
     setTimeout(() => document.querySelector(".rectangle").classList.remove("color-active"), 1000);
+    setTimeout(() => document.querySelector(".rectangle").style.backgroundColor = "#ccc", 1000);
 }
 
 
