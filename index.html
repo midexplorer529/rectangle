@@ -27,7 +27,10 @@
                         style="display: grid; grid-template-columns: repeat(4, 1fr); grid-gap: 1rem; position: relative;">
                         <div
                             style="display: flex; flex-direction: column; justify-content: space-between; align-items: center;">
-                            <input type="text" placeholder="Enter a hex color value..." class="form-control color">
+                            <label for="hex">Enter a hex color code:</label>
+                            <input type="text" placeholder="Enter a hex color value..." class="form-control hex">
+                            <label for="picker">or pick a color:</label>
+                            <input type="color" class="picker">
                             <button class="btn btn-primary change-color w-100">Change Color</button>
                         </div>
                         <div

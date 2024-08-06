@@ -5,12 +5,24 @@ function getDegree() {
     degree = $(".degree").val();
 };
 
+// function getColor() {
+//     color = $(".color").val();
+//     console.log(color)
+// };
+
 function getColor() {
-    color = $(".color").val();
+    // Prioritize the color picker value if it's not the default
+    var pickerColor = $(".picker").val();
+    var hexColor = $(".hex").val();
+    color = hexColor ? hexColor : pickerColor;
+    // console.log(color);
 };
 
 function changeColor() {
     getColor();
+    if (!color) {
+        return;
+    };
     $(".rectangle").toggleClass("color-active");
     $(".rectangle").css("background-color", $(".rectangle").hasClass("color-active") ? `${color}` : "#ccc");
 };
@@ -35,6 +47,9 @@ $(".make-square").click(makeSquare);
 
 function rotate() {
     getDegree();
+    if (!degree) {
+        return;
+    };
     $(".rectangle").toggleClass("rotate-active")
     $(".rectangle").css("transform", $(".rectangle").hasClass("rotate-active") ? `rotate(${degree}deg)` : "rotate(0deg)");
 };
@@ -58,13 +73,21 @@ $(".make-round").click(makeRound);
 // });
 
 $(".all-in-one").click(function () {
-    setTimeout(changeColor, 0);
+    setTimeout(function () {
+        $(".rectangle").hasClass("color-active") ? null : changeColor();
+    }, 0);
 
-    setTimeout(makeSquare, 1000);
+    setTimeout(function () {
+        $(".rectangle").hasClass("square-active") ? null : makeSquare();
+    }, 1000);
 
-    setTimeout(rotate, 2000);
+    setTimeout(function () {
+        $(".rectangle").hasClass("rotate-active") ? null : rotate();
+    }, 2000);
 
-    setTimeout(makeRound, 3000);
+    setTimeout(function () {
+        $(".rectangle").hasClass("round-active") ? null : makeRound();
+    }, 3000);
 });
 
 $(".reset").click(function () {
