@@ -55,3 +55,13 @@ button {
 .round-active {
     border-radius: 50%;
 }
+
+.message {
+    margin: 0;
+    padding: 0;
+    height: 24px;
+}
+
+.cp-cont {
+    width: 100%;
+}

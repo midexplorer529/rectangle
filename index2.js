@@ -6,16 +6,9 @@ function getDegree() {
     degree = $(".degree").val();
 };
 
-// function getColor() {
-//     color = $(".color").val();
-//     console.log(color)
-// };
-
 function getColor() {
     // Prioritize the color picker value if it's not the default
-    var pickerColor = $(".picker").val();
-    var hexColor = $(".hex").val();
-    color = hexColor ? hexColor : pickerColor;
+    color = $(".hex").val();
     // console.log(color);
 };
 
@@ -26,6 +19,8 @@ function changeColor() {
     };
     rectangle.toggleClass("color-active");
     rectangle.css("background-color", rectangle.hasClass("color-active") ? `${color}` : "#ccc");
+    $(".message").append("<p>Color Changed</p>");
+    setTimeout(() => $("p").remove(), 3000);
 };
 
 $(".change-color").click(changeColor);
@@ -38,6 +33,8 @@ $(".change-color").click(changeColor);
 
 function makeSquare() {
     rectangle.toggleClass("square-active");
+    $(".message").append("<p>Made Square</p>");
+    setTimeout(() => $("p").remove(), 3000);
 };
 
 $(".make-square").click(makeSquare);
@@ -53,6 +50,8 @@ function rotate() {
     };
     rectangle.toggleClass("rotate-active")
     rectangle.css("transform", rectangle.hasClass("rotate-active") ? `rotate(${degree}deg)` : "rotate(0deg)");
+    $(".message").append("<p>Rotated</p>");
+    setTimeout(() => $("p").remove(), 3000);
 };
 
 $(".rotate").click(rotate);
@@ -65,6 +64,8 @@ $(".rotate").click(rotate);
 
 function makeRound() {
     rectangle.toggleClass("round-active");
+    $(".message").append("<p>Made Round</p>");
+    setTimeout(() => $("p").remove(), 3000);
 };
 
 $(".make-round").click(makeRound);
@@ -73,23 +74,42 @@ $(".make-round").click(makeRound);
 //     rectangle.toggleClass("round-active");
 // });
 
-$(".all-in-one").click(function () {
-    setTimeout(function () {
-        rectangle.hasClass("color-active") ? null : changeColor();
-    }, 0);
+function reset() {
+    rectangle.removeClass("round-active");
+    rectangle.removeClass("rotate-active");
+    rectangle.css("transform", "rotate(0deg)");
+    rectangle.removeClass("square-active");
+    rectangle.removeClass("color-active");
+    rectangle.css("background-color", "#ccc");
+}
 
-    setTimeout(function () {
-        rectangle.hasClass("square-active") ? null : makeSquare();
-    }, 1000);
+function checkAndRunFunctions() {
+    const classesToCheck = ["color-active", "square-active", "rotate-active", "round-active"];
+    let hasClass = false;
 
-    setTimeout(function () {
-        rectangle.hasClass("rotate-active") ? null : rotate();
-    }, 2000);
+    for (let i = 0; i < classesToCheck.length; i++) {
+        if (rectangle.hasClass(classesToCheck[i])) {
+            hasClass = true;
+            break;
+        }
+    }
 
-    setTimeout(function () {
-        rectangle.hasClass("round-active") ? null : makeRound();
-    }, 3000);
-});
+    if (hasClass) {
+        reset();
+        setTimeout(changeColor, 1000);
+        setTimeout(makeSquare, 2000);
+        setTimeout(rotate, 3000);
+        setTimeout(makeRound, 4000);
+    } else {
+        // Run your functions sequentially or based on your logic
+        setTimeout(changeColor, 0);
+        setTimeout(makeSquare, 1000);
+        setTimeout(rotate, 2000);
+        setTimeout(makeRound, 3000);
+    }
+}
+
+$(".all-in-one").click(checkAndRunFunctions);
 
 $(".reset").click(function () {
     setTimeout(function () {
