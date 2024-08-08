@@ -15,10 +15,6 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-md-12 m-0 p-0 message">
-            </div>
-        </div>
-        <div class="row">
             <div class="col-md-12 mb-5">
                 <div class="rectangle">
                     <h1>BOX</h1>
@@ -37,37 +33,46 @@
                                 <span class="input-group-text myColorPicker-preview">&nbsp;</span>
                                 <input type="text" class="form-control hex">
                             </div>
-                            <button class="btn btn-primary change-color w-100">Change Color</button>
+                            <button class="btn btn-primary custom-btn change-color w-100" data-type="primary">Change
+                                Color</button>
                         </div>
                         <div
                             style="display: flex; flex-direction: column; justify-content: space-between; align-items: center;">
                             <input type="text" class="form-control" style="visibility:hidden;">
-                            <button class="btn btn-secondary make-square w-100">Make Square</button>
+                            <button class="btn btn-secondary custom-btn make-square w-100" data-type="secondary">Make
+                                Square</button>
                         </div>
                         <div
                             style="display: flex; flex-direction: column; justify-content: space-between; align-items: center;">
-                            <input type="number" placeholder="Enter a degree value..." class="form-control degree">
-                            <button class="btn btn-info rotate w-100">Rotate</button>
+                            <input type="number" placeholder="Enter a degree value..." class="form-control degree"
+                                value="45">
+                            <button class="btn btn-info custom-btn rotate w-100" data-type="info">Rotate</button>
                         </div>
                         <div
                             style="display: flex; flex-direction: column; justify-content: space-between; align-items: center;">
                             <input type="text" class="form-control" style="visibility:hidden;">
-                            <button class="btn btn-warning make-round w-100">Make Round</button>
+                            <button class="btn btn-warning custom-btn make-round w-100" data-type="warning">Make
+                                Round</button>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div
                         style="display: grid; grid-template-columns: repeat(2, 1fr); grid-gap: 1rem; position: relative;">
-                        <button class="btn btn-success all-in-one w-100 m-0">All In One</button>
-                        <button class="btn btn-danger reset w-100 m-0">Reset</button>
+                        <button class="btn btn-success custom-btn all-in-one w-100 m-0" data-type="success">All In
+                            One</button>
+                        <button class="btn btn-danger custom-btn reset w-100 m-0" data-type="danger">Reset</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <script src="jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="assets/plugins/bygiro/jquery.colorpicker.bygiro.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.min.js"
+        integrity="sha512-a6ctI6w1kg3J4dSjknHj3aWLEbjitAXAjLDRUxo2wyYmDFRcz2RJuQr5M3Kt8O/TtUSp8n2rAyaXYy1sjoKmrQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="jquery.bootstrap-growl.js"></script>
     <script src="index2.js"></script>
     <script>
         $('.myColorPicker').colorPickerByGiro({

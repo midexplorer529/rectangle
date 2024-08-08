@@ -9,7 +9,19 @@ function getDegree() {
 function getColor() {
     // Prioritize the color picker value if it's not the default
     color = $(".hex").val();
-    // console.log(color);
+};
+
+function bootstrapAlert(message, type) {
+    $.bootstrapGrowl(message, {
+        ele: 'body', // which element to append to
+        type: type, // (null, 'info', 'danger', 'success')
+        offset: { from: 'top', amount: 20 }, // 'top', or 'bottom'
+        align: 'right', // ('left', 'right', or 'center')
+        width: 250, // (integer, or 'auto')
+        delay: 4000, // Time while the message will be displayed. It's not equivalent to the *demo* timeOut!
+        allow_dismiss: false, // If true then will display a cross to close the popup.
+        stackup_spacing: 10 // spacing between consecutively stacked growls.
+    });
 };
 
 function changeColor() {
@@ -19,60 +31,36 @@ function changeColor() {
     };
     rectangle.toggleClass("color-active");
     rectangle.css("background-color", rectangle.hasClass("color-active") ? `${color}` : "#ccc");
-    $(".message").append("<p>Color Changed</p>");
-    setTimeout(() => $("p").remove(), 3000);
+    bootstrapAlert("Color Changed", "primary");
 };
 
 $(".change-color").click(changeColor);
 
-// $(".change-color").click(function () {
-//     getColor();
-//     rectangle.toggleClass("color-active");
-//     rectangle.css("background-color", rectangle.hasClass("color-active") ? `${color}` : "#ccc");
-// });
-
 function makeSquare() {
     rectangle.toggleClass("square-active");
-    $(".message").append("<p>Made Square</p>");
-    setTimeout(() => $("p").remove(), 3000);
+    bootstrapAlert("Width Changed", "secondary");
 };
 
 $(".make-square").click(makeSquare);
-
-// $(".make-square").click(function () {
-//     rectangle.toggleClass("square-active");
-// });
 
 function rotate() {
     getDegree();
     if (!degree) {
         return;
     };
-    rectangle.toggleClass("rotate-active")
+    rectangle.toggleClass("rotate-active");
     rectangle.css("transform", rectangle.hasClass("rotate-active") ? `rotate(${degree}deg)` : "rotate(0deg)");
-    $(".message").append("<p>Rotated</p>");
-    setTimeout(() => $("p").remove(), 3000);
+    bootstrapAlert("Rotated", "info");
 };
 
 $(".rotate").click(rotate);
 
-// $(".rotate").click(function () {
-//     getDegree();
-//     rectangle.toggleClass("rotate-active")
-//     rectangle.css("transform", rectangle.hasClass("rotate-active") ? `rotate(${degree}deg)` : "rotate(0deg)");
-// });
-
 function makeRound() {
     rectangle.toggleClass("round-active");
-    $(".message").append("<p>Made Round</p>");
-    setTimeout(() => $("p").remove(), 3000);
+    bootstrapAlert("Border Radius Changed", "warning");
 };
 
 $(".make-round").click(makeRound);
-
-// $(".make-round").click(function () {
-//     rectangle.toggleClass("round-active");
-// });
 
 function reset() {
     rectangle.removeClass("round-active");
@@ -95,6 +83,7 @@ function checkAndRunFunctions() {
     }
 
     if (hasClass) {
+        bootstrapAlert("All In One!", "success");
         reset();
         setTimeout(changeColor, 1000);
         setTimeout(makeSquare, 2000);
@@ -102,6 +91,7 @@ function checkAndRunFunctions() {
         setTimeout(makeRound, 4000);
     } else {
         // Run your functions sequentially or based on your logic
+        bootstrapAlert("All In One!", "success");
         setTimeout(changeColor, 0);
         setTimeout(makeSquare, 1000);
         setTimeout(rotate, 2000);
@@ -129,4 +119,5 @@ $(".reset").click(function () {
         rectangle.removeClass("color-active");
         rectangle.css("background-color", "#ccc");
     }, 1000);
+    bootstrapAlert("Reset...", "danger");
 });
