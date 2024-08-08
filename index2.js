@@ -35,6 +35,47 @@ function changeColor() {
 };
 
 $(".change-color").click(changeColor);
+$(document).keyup(function (event) {
+    // if (event.which == 49) {
+    //     event.preventDefault();
+    //     $(this).focus();
+    //     changeColor();
+    //     console.log(event.which)
+    // }
+
+    switch (event.which) {
+        case 49:
+            event.preventDefault();
+            changeColor();
+            console.log(event.which)
+            break;
+        case 50:
+            event.preventDefault();
+            makeSquare();
+            console.log(event.which)
+            break;
+        case 51:
+            event.preventDefault();
+            rotate();
+            console.log(event.which)
+            break;
+        case 52:
+            event.preventDefault();
+            makeRound();
+            console.log(event.which)
+            break;
+        case 53:
+            event.preventDefault();
+            allInOne();
+            console.log(event.which)
+            break;
+        case 54:
+            event.preventDefault();
+            reset();
+            console.log(event.which)
+            break;
+    }
+});
 
 function makeSquare() {
     rectangle.toggleClass("square-active");
@@ -63,45 +104,6 @@ function makeRound() {
 $(".make-round").click(makeRound);
 
 function reset() {
-    rectangle.removeClass("round-active");
-    rectangle.removeClass("rotate-active");
-    rectangle.css("transform", "rotate(0deg)");
-    rectangle.removeClass("square-active");
-    rectangle.removeClass("color-active");
-    rectangle.css("background-color", "#ccc");
-}
-
-function checkAndRunFunctions() {
-    const classesToCheck = ["color-active", "square-active", "rotate-active", "round-active"];
-    let hasClass = false;
-
-    for (let i = 0; i < classesToCheck.length; i++) {
-        if (rectangle.hasClass(classesToCheck[i])) {
-            hasClass = true;
-            break;
-        }
-    }
-
-    if (hasClass) {
-        bootstrapAlert("All In One!", "success");
-        reset();
-        setTimeout(changeColor, 1000);
-        setTimeout(makeSquare, 2000);
-        setTimeout(rotate, 3000);
-        setTimeout(makeRound, 4000);
-    } else {
-        // Run your functions sequentially or based on your logic
-        bootstrapAlert("All In One!", "success");
-        setTimeout(changeColor, 0);
-        setTimeout(makeSquare, 1000);
-        setTimeout(rotate, 2000);
-        setTimeout(makeRound, 3000);
-    }
-}
-
-$(".all-in-one").click(checkAndRunFunctions);
-
-$(".reset").click(function () {
     setTimeout(function () {
         rectangle.removeClass("round-active");
     }, 0);
@@ -120,4 +122,41 @@ $(".reset").click(function () {
         rectangle.css("background-color", "#ccc");
     }, 1000);
     bootstrapAlert("Reset...", "danger");
-});
+}
+
+function allInOne() {
+    const classesToCheck = ["color-active", "square-active", "rotate-active", "round-active"];
+    let hasClass = false;
+
+    for (let i = 0; i < classesToCheck.length; i++) {
+        if (rectangle.hasClass(classesToCheck[i])) {
+            hasClass = true;
+            break;
+        }
+    }
+
+    if (hasClass) {
+        bootstrapAlert("All In One!", "success");
+        rectangle.removeClass("round-active");
+        rectangle.removeClass("rotate-active");
+        rectangle.css("transform", "rotate(0deg)");
+        rectangle.removeClass("square-active");
+        rectangle.removeClass("color-active");
+        rectangle.css("background-color", "#ccc");
+        setTimeout(changeColor, 1000);
+        setTimeout(makeSquare, 2000);
+        setTimeout(rotate, 3000);
+        setTimeout(makeRound, 4000);
+    } else {
+        // Run your functions sequentially or based on your logic
+        bootstrapAlert("All In One!", "success");
+        setTimeout(changeColor, 0);
+        setTimeout(makeSquare, 1000);
+        setTimeout(rotate, 2000);
+        setTimeout(makeRound, 3000);
+    }
+}
+
+$(".all-in-one").click(allInOne);
+
+$(".reset").click(reset);
